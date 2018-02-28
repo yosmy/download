@@ -1,0 +1,17 @@
+version: '2'
+services:
+  nginx:
+    image: yosmy/nginx
+    container_name: download_nginx
+    volumes:
+      - ../public:/usr/share/nginx/html
+    environment:
+      - VIRTUAL_HOST=download.yosmy.com
+      - LETSENCRYPT_HOST=download.yosmy.com
+      - LETSENCRYPT_EMAIL=contact@yosmy.com
+    restart: always
+
+networks:
+  default:
+    external:
+      name: proxy_default
